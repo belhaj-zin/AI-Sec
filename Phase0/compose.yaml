@@ -1,0 +1,13 @@
+services:
+  notes-api:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: notes-api
+    ports:
+      - "8000:8000"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env or your shell}
+      DB_PATH: /data/notes.db
+    volumes:
+      - ./data:/data
